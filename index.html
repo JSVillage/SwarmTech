@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>SwarmTech</title>
+    <!-- if she don't find you handsome, at least she'll find you handy -->
+
+    <link rel="stylesheet" type="text/css" href="css/app.css"/>
+    <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <script type='text/javascript' src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js'></script>
+  </head>
+
+  <body>
+    <div id="main">
+      <main></main>
+    </div>
+
+    <!-- inline templates: because why the fuck not -->
+    <template id="main-template">
+      <login v-if="!name"></login>
+      <dashboard v-if="name" :name="name"></dashboard>
+    </template>
+
+    <template id="login-template">
+      <div class="login">
+        <h2>Hello!</h2>
+        <p>Please tell us your name before you join SwarmTech.</p>
+
+        <input class="login-input"
+          type="text"
+          v-model="name"
+          @keyup.enter="setSessionName"
+          v-el:login-input />
+
+        <button v-on:click="setSessionName">Join!</button>
+      </div>
+    </template>
+
+    <template id="chat-message-template">
+      <span class="chat">
+        <span class="chat-author">{{author + ':'}}</span>
+        <span class="chat-message">{{message}}</span>
+      </span>
+    </template>
+
+    <template id="chat-box-template">
+      <div class="chatbox">
+        <pre v-if="debug" class="data-preview">
+          <code>{{debugOutput}}</code>
+        </pre>
+        <div v-el:history class="history">
+          <span class="chat">
+            <span class="chat-author">System</span>
+            <span class="chat-message">Welcome, {{name}}!</span>
+          </span>
+
+        <span v-for="msg in history" class="chat">
+          <span class="chat-author">{{msg.name + ':'}}</span>
+          <span class="chat-message">{{msg.message}}</span>
+        </span>
+
+        </div>
+        <div class="controls">
+          <input
+            v-el:chat-input
+            class="chat-input"
+            @keyup.enter="sendMessage"
+            v-model="message" />
+          <button class="sendButton" @click="sendMessage">Send</button>
+        </div>
+      </div>
+    </template>
+
+    <template id="dashboard-template">
+      <div class="dashboard">
+        <map></map>
+        <chat-box :name="name"></chat-box>
+      </div>
+    </template>
+
+    <template id="map-template">
+      <div id="map" class="map">
+      </div>
+    </template>
+
+    <!-- lots o' unminified scripts: but performance is still good 'nuff -->
+    <script src="js/lib/aja.min.js"></script>
+    <script src="js/lib/vue.min.js"></script>
+
+    <script src="js/map.js"></script>
+    <script src="js/chatApi.js"></script>
+    <script src="js/chatBox.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+
+</html>
