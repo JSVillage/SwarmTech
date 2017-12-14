@@ -2,6 +2,36 @@
 
 Realtime coordination demo for disaster response teams.
 
+## Who
+
+* Grassroots volunteers for disaster response
+* Police, Fire, National Guard
+
+## Why
+
+* Teams need to coordinate/share data to avoid wasted effort and be effective
+* Volunteer teams may form and disband in a way that cannot be preplanned
+* Need decentralized information management in order to take advantage of decentralized network (e.g. mesh)
+
+## What
+
+* Phone app reporting location and allowing text chat (field agents)
+* Command center app showing pins for field agents, near-real-time integrated communications and situational awareness
+* Ability to merge two teams situational awareness with 0 shared infrastructure and no custom integration costs (assuming protocol compliance)
+* Demonstration of capabilities via “disaster drills” and report on outcome
+
+## How
+
+* Near-real-time state synchronization based on CRDTs
+* Use data format RFCs when possible (e.g. GeoJSON, jCard)
+* Extensible schema-less graph data to express relationships
+* Content addressing
+* Peer discovery by gossip protocol
+* Object capability model for data access control
+* Cryptographically verified identity, ownership, access
+
+If you don't understand what these things mean, don't worry, you probably don't have to in order to use it, or even build apps on it.  Keep calm and carry on!
+
 # Contributing
 
 To begin contributing, please fork the repository to your personal account, clone it, and submit a pull request.  We'll respond with comments and should have your patch merged in short order.  If there are any problems with this process, please talk to us on [gitter.im/JSVillage](https://gitter.im/JSVillage).
