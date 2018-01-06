@@ -30,7 +30,7 @@ Now we can serve the site:
 
 ```
 cd [where-ever-you-cloned-this-repo]
-static .
+parcel client/index.html
 ```
 
 Then just open your browser at [http://127.0.0.1:8080](http://127.0.0.1:8080).
