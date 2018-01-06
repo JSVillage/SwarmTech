@@ -4,6 +4,7 @@
     template: '#chat-box-template',
     data: function() {
       return {
+        message: '',
         history: [],
         debug: false,
       }
@@ -19,14 +20,13 @@
       chatApi.onHistoryUpdate = this.setHistory.bind(this);
       chatApi.refresh();
 
-      var _this = this;
-      Vue.nextTick(function() {
-        _this.$els.chatInput.focus();
-        _this.scrollToBottom();
+      Vue.nextTick(() => {
+        this.$refs.chatInput.focus();
+        this.scrollToBottom();
       })
     },
     watch: {
-      history: this.scrollToBottom
+      history() {this.scrollToBottom()}
     },
 
     methods: {
@@ -37,8 +37,6 @@
         message = e.target.value;
       },
       sendMessage: function() {
-        var _this = this;
-
         if (this.message === ':debug') {
           this.debug = this.debug !== true;
           this.message = '';
@@ -58,11 +56,11 @@
           });
 
           this.message = '';
-          Vue.nextTick(_this.scrollToBottom)
+          Vue.nextTick(this.scrollToBottom)
         }
       },
       scrollToBottom: function() {
-        var pane = this.$els.history;
+        var pane = this.$refs.history;
         pane.scrollTop = pane.scrollHeight;
       },
     },

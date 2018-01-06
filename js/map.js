@@ -1,11 +1,11 @@
 (function() {
 
-  Vue.component('map', {
+  Vue.component('st-map', {
     template: '#map-template',
-    data: function() {
+    data() {
       return {}
     },
-    ready: function() {
+    mounted() {
       console.log('in mounted method')
       map = L.map( 'map', {
         center: [33.572162, -112.087966], // Phoenix, AZ
