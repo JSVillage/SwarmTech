@@ -41,18 +41,5 @@ setModel('pins', ashID, ash)
 
 module.exports = data
 
-
 // 4.b. ...wait for the state to arrive
-ash.on('init', function () {
-    // ...so we may touch it finally.
-    ash.set({name: 'Ash', x: 3, y: 4})
-});
-
-// 5. let's subscribe to the object's change events
-ash.on(function (spec, val, source) {
-    // this will be triggered by every state change, be it
-    // local or remote
-    console.log('event: ', spec.op(), val)
-    // outputs:
-    // set {x:3, y:4}
-});
+ash.set({name: 'Ash', x: 33.572162, y: -112.087966})
