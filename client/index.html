@@ -6,19 +6,21 @@
     <!-- if she don't find you handsome, at least she'll find you handy -->
 
     <link rel="stylesheet" type="text/css" href="css/app.css"/>
-    <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
-    <script type='text/javascript' src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js'></script>
+    <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet/v1.2.0/leaflet.css" />
+    <script type='text/javascript' src='http://cdn.leafletjs.com/leaflet/v1.2.0/leaflet.js'></script>
   </head>
 
   <body>
     <div id="main">
-      <main></main>
+      <st-main></st-main>
     </div>
 
     <!-- inline templates: because why the fuck not -->
     <template id="main-template">
-      <login v-if="!name"></login>
-      <dashboard v-if="name" :name="name"></dashboard>
+      <div>
+        <login v-if="!name" @name-set="setName"></login>
+        <st-dashboard v-if="name" :name="name"></st-dashboard>
+      </div>
     </template>
 
     <template id="login-template">
@@ -30,7 +32,7 @@
           type="text"
           v-model="name"
           @keyup.enter="setSessionName"
-          v-el:login-input />
+          ref="loginInput" />
 
         <button v-on:click="setSessionName">Join!</button>
       </div>
@@ -48,7 +50,7 @@
         <pre v-if="debug" class="data-preview">
           <code>{{debugOutput}}</code>
         </pre>
-        <div v-el:history class="history">
+        <div ref="history" class="history">
           <span class="chat">
             <span class="chat-author">System</span>
             <span class="chat-message">Welcome, {{name}}!</span>
@@ -62,7 +64,7 @@
         </div>
         <div class="controls">
           <input
-            v-el:chat-input
+            ref="chatInput"
             class="chat-input"
             @keyup.enter="sendMessage"
             v-model="message" />
@@ -73,7 +75,7 @@
 
     <template id="dashboard-template">
       <div class="dashboard">
-        <map></map>
+        <st-map></st-map>
         <chat-box :name="name"></chat-box>
       </div>
     </template>
@@ -85,7 +87,7 @@
 
     <!-- lots o' unminified scripts: but performance is still good 'nuff -->
     <script src="js/lib/aja.min.js"></script>
-    <script src="js/lib/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
 
     <script src="js/map.js"></script>
     <script src="js/chatApi.js"></script>

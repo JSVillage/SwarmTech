@@ -1,0 +1,31 @@
+{
+  "name": "swarmtech",
+  "version": "1.0.0",
+  "description": "Realtime coordination demo for disaster response teams.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JSVillage/SwarmTech.git"
+  },
+  "author": "q@bitmage.net",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JSVillage/SwarmTech/issues"
+  },
+  "homepage": "https://github.com/JSVillage/SwarmTech#readme",
+  "dependencies": {
+    "swarm": "^0.3.25",
+    "swarm-syncable": "^1.2.1",
+    "uuid": "^3.1.0",
+    "vue2-leaflet": "0.0.57",
+    "ws": "^4.0.0"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-2": "^6.24.1"
+  }
+}

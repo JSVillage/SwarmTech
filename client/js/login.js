@@ -10,15 +10,12 @@
     methods: {
       setSessionName: function() {
         if (this.name) {
-          this.$dispatch('name-set', this.name)
+          this.$emit('name-set', this.name)
         }
       },
     },
     created: function() {
-      var _this = this;
-      Vue.nextTick(function() {
-        _this.$els.loginInput.focus();
-      });
+      Vue.nextTick(() => this.$refs.loginInput.focus())
     },
   });
 
