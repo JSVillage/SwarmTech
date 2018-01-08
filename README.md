@@ -53,7 +53,8 @@ nvm ls-remote
 nvm install v8.9.4
 
 # install parcel build tool
-npm i -g parcel
+npm install -g parcel-bundler
+
 ```
 
 Now we can serve the site:
