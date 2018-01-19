@@ -19,6 +19,7 @@
   "dependencies": {
     "swarm": "^0.3.25",
     "swarm-syncable": "^1.2.1",
+    "torch": "^0.2.7",
     "uuid": "^3.1.0",
     "vue2-leaflet": "0.0.57",
     "ws": "^4.0.0"

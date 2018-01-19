@@ -63,3 +63,4 @@ dist
 node_modules
 js/lib
 .cache
+storage

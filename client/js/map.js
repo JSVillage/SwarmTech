@@ -1,7 +1,7 @@
 import pin24url from '../images/pin24.png'
 import pin48url from '../images/pin48.png'
 
-const {pins} = require('./data')
+const {setModel, getModel} = require('./db')
 
 Vue.component('st-map', {
   template: '#map-template',
@@ -10,6 +10,7 @@ Vue.component('st-map', {
       markers: {}
     }
   },
+  props: ['name'],
   mounted() {
     const map = L.map( 'map', {
       center: [33.572162, -112.087966], // Phoenix, AZ
@@ -30,8 +31,10 @@ Vue.component('st-map', {
       popupAnchor: [0, -14]
     })
 
+    setModel('Pin', this.name, {name: this.name, x: 33.572162, y: -112.087966})
+
     const addPin = (pinID) => {
-      const pinData = pins[pinID]
+      const pinData = getModel('Pin', pinID)
 
       // add the pin to the map
       const marker = L.marker([pinData.x, pinData.y], {icon: pinIcon})
@@ -48,10 +51,7 @@ Vue.component('st-map', {
       })
     }
 
-    pins['ash'].on('.init', () => {
-      console.log('adding pin')
-      addPin('ash')
-    })
+    addPin(this.name)
   }
 
 });

@@ -56,10 +56,10 @@
             <span class="chat-message">Welcome, {{name}}!</span>
           </span>
 
-        <span v-for="msg in history" class="chat">
-          <span class="chat-author">{{msg.name + ':'}}</span>
-          <span class="chat-message">{{msg.message}}</span>
-        </span>
+          <span v-for="msg in history" class="chat">
+            <span class="chat-author">{{msg.name + ':'}}</span>
+            <span class="chat-message">{{msg.message}}</span>
+          </span>
 
         </div>
         <div class="controls">
@@ -75,7 +75,7 @@
 
     <template id="dashboard-template">
       <div class="dashboard">
-        <st-map></st-map>
+        <st-map :name="name"></st-map>
         <chat-box :name="name"></chat-box>
       </div>
     </template>
