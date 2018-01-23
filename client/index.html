@@ -23,6 +23,8 @@
       </div>
     </template>
 
+ <!-- login at template  -->
+
     <template id="login-template">
       <div class="login">
         <h2>Hello!</h2>
@@ -45,8 +47,12 @@
       </span>
     </template>
 
+
+
+<!-- chattting template -->
+
     <template id="chat-box-template">
-      <div class="chatbox">
+      <div class="chatbox" >
         <pre v-if="debug" class="data-preview">
           <code>{{debugOutput}}</code>
         </pre>
@@ -73,16 +79,30 @@
       </div>
     </template>
 
+<!-- dashboard template -->
+
+
     <template id="dashboard-template">
       <div class="dashboard">
-        <st-map></st-map>
-        <chat-box :name="name"></chat-box>
+        <div v-if="windowWidth > 900">
+            <st-map></st-map>
+            <chat-box :name="name"></chat-box>
+        </div>
+        <div>
+            <st-map class="map_mobile" v-if="windowWidth < 950 && toggleView == false "></st-map>
+            <chat-box class="chat_mobile" :name="name" v-else></chat-box>
+            <button class="mobile_toggle" @click="toggleButton"> Switch</button>
+        </div>
+      
       </div>
     </template>
 
+
+   <!-- map template component    -->
+
     <template id="map-template">
       <div id="map" class="map">
-      </div>
+      </div> 
     </template>
 
     <!-- lots o' unminified scripts: but performance is still good 'nuff -->
