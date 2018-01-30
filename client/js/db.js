@@ -3,9 +3,13 @@ const {Spec, Host} = Swarm
 //Swarm.env.debug = true
 //Swarm.env.trace = true
 
-const Pin = require('../../common/models/pin')
+const loadModels = require('../../common/loadModels')
+const models = [require('../../common/models/pin')]
 
 const app = window.app = {}
+
+// data structure
+const db = app.db = loadModels(models)
 
 // stuff to initialize hostID
 const randStr = () => Spec.int2base((Math.random() * 10000) | 0)
@@ -28,32 +32,5 @@ try {
 
 // 2. connect to your server
 host.connect('ws://localhost:8001', {delay: 50})
-
-// data structure
-const db = app.db = {
-  data: {},
-
-  models: {Pin},
-
-  // getters/setters
-  setModel: function setModel(model, id, value) {
-    // is it already in there?
-    var obj = db.data[model] && db.data[model][id]
-
-    // if not, store it
-    if (!obj) {
-      const Model = db.models[model]
-      obj = new Model(id)
-      db.data[model] || (db.data[model] = {})
-      db.data[model][id] = obj
-    }
-
-    // set the new value
-    obj.set(value)
-  },
-  getModel: function getModel(model, id) {
-    return db.data[model] && db.data[model][id]
-  }
-}
 
 module.exports = db

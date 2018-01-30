@@ -1,3 +1,6 @@
+storage
+tmp
+
 # Logs
 logs
 *.log
@@ -63,4 +66,3 @@ dist
 node_modules
 js/lib
 .cache
-storage

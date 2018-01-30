@@ -4,8 +4,12 @@ const ws_lib = require('ws')
 const Swarm = require('swarm')
 Swarm.env.trace = true
 Swarm.env.debug = true
+Swarm.env.error = console.error
+Swarm.env.warning = console.error
 
-const Pin = require('../common/models/pin.js') // see the model definition above
+const loadModels = require('../common/loadModels')
+const models = [require('../common/models/pin')]
+loadModels(models)
 
 // use file storage
 const fileStorage = new Swarm.FileStorage('storage')
