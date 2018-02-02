@@ -8,7 +8,7 @@ Swarm.env.error = console.error
 Swarm.env.warning = console.error
 
 const loadModels = require('../common/loadModels')
-const models = [require('../common/models/pin')]
+const models = [require('../common/models/pin'), require('../common/models/chat')]
 loadModels(models)
 
 // use file storage

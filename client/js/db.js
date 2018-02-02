@@ -1,10 +1,15 @@
+const {join} = require('path')
 const Swarm = require('swarm')
 const {Spec, Host} = Swarm
 //Swarm.env.debug = true
 //Swarm.env.trace = true
 
 const loadModels = require('../../common/loadModels')
-const models = [require('../../common/models/pin')]
+
+const models = [
+  require('../../common/models/pin'),
+  require('../../common/models/chat'),
+]
 
 const app = window.app = {}
 

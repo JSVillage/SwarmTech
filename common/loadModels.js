@@ -1,5 +1,5 @@
 const _ = require('lodash')
-let {Model, Set, env} = require('swarm')
+let {Syncable, Model, Set, env} = require('swarm')
 env.warn = console.error
 
 // this monkey patches a Syncable constructor to add a ready() function
@@ -35,7 +35,7 @@ function addReady(Constructor) {
 }
 
 // augment these classes with helper methods for detecting when state is ready
-[Model, Set].forEach(addReady)
+[Syncable].forEach(addReady)
 
 module.exports = function loadModels(models) {
 
@@ -45,9 +45,23 @@ module.exports = function loadModels(models) {
 
     // getters/setters
     setModel: function setModel(model, id, value) {
+      var obj
 
-      // is it already in local instances?
-      var obj = db.getModel(model, id)
+      // retrieve the model from the server
+      if (id) {
+        obj = db.getModel(model, id)
+
+        // TODO: try retrieving it from the set
+        // will be needed for editing a chat message
+        // but not for creating/sending
+
+      // create a local model
+      // WORKAROUND: we can't retrieve models from the host without an ID,
+      // and I don't know how to have the host generate an ID
+      } else {
+        const M = db.models[model]
+        obj = new M
+      }
 
       // add it to the corresponding set
       const IDSet = db.getModelSet(model)
