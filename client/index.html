@@ -6,8 +6,8 @@
     <!-- if she don't find you handsome, at least she'll find you handy -->
 
     <link rel="stylesheet" type="text/css" href="css/app.css"/>
-    <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet/v1.2.0/leaflet.css" />
-    <script type='text/javascript' src='http://cdn.leafletjs.com/leaflet/v1.2.0/leaflet.js'></script>
+    <link rel="stylesheet" type="text/css" href="../node_modules/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
   </head>
 
   <body>
@@ -62,10 +62,10 @@
             <span class="chat-message">Welcome, {{name}}!</span>
           </span>
 
-        <span v-for="msg in history" class="chat">
-          <span class="chat-author">{{msg.name + ':'}}</span>
-          <span class="chat-message">{{msg.message}}</span>
-        </span>
+          <span v-for="msg in history" class="chat">
+            <span class="chat-author">{{msg.name + ':'}}</span>
+            <span class="chat-message">{{msg.message}}</span>
+          </span>
 
         </div>
         <div class="controls">
@@ -85,7 +85,7 @@
     <template id="dashboard-template">
       <div class="dashboard">
         <div v-if="windowWidth > 900">
-            <st-map></st-map>
+            <st-map :name="name"></st-map>
             <chat-box :name="name"></chat-box>
         </div>
         <div>
@@ -93,7 +93,6 @@
             <chat-box class="chat_mobile" :name="name" v-else></chat-box>
             <button class="mobile_toggle" @click="toggleButton"> Switch</button>
         </div>
-      
       </div>
     </template>
 
@@ -109,10 +108,6 @@
     <script src="js/lib/aja.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
 
-    <script src="js/map.js"></script>
-    <script src="js/chatApi.js"></script>
-    <script src="js/chatBox.js"></script>
-    <script src="js/login.js"></script>
     <script src="js/main.js"></script>
   </body>
 

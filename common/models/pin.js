@@ -1,11 +1,11 @@
-const {Model} = require('swarm')
-
-const Pin = Model.extend('Pin', {
-  defaults: {
-    name: 'Unnamed',
-    x: 0,
-    y: 0
+module.exports = {
+  name: 'Pin',
+  plural: 'Pins',
+  config: {
+    defaults: {
+      name: 'Unnamed',
+      lat: 0,
+      lng: 0
+    }
   }
-})
-
-module.exports = Pin
+}

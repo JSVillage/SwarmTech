@@ -60,16 +60,17 @@ npm install -g parcel-bundler
 Now we can serve the site:
 
 ```
+// runs on port 1234
 cd [where-ever-you-cloned-this-repo]
 parcel client/index.html
+
+// in a new terminal
+// runs on port 8001
+node server/index.js
 ```
 
-Then just open your browser at [http://127.0.0.1:8080](http://127.0.0.1:8080).
-
-You'll have to refresh the page any time you make changes to the code, but other than that it's not bad.  If you want livereload, [someone's made a project for that](https://github.com/farf/static-livereload), but it's a little bit more cumbersome to configure.  Maybe someone could fork [node-static](https://github.com/cloudhead/node-static) and add livereload?  If you do, feel free to update this documentation with your wonderful improvements.  :-)
+Then just open your browser at [http://127.0.0.1:1234](http://127.0.0.1:1234).
 
 # Making Changes
 
-Well, it's just good ol' HTML, CSS, and Javascript.  You were expecting a build process?  Sorry.  We're too lazy for that (and it serves as an unnecessary barrier to learning).  We do use vue.js, so it should be possible to keep this code somewhat modular and well kept.
-
-Take a look around and edit files as you see fit, then refresh to see your changes.  May the force be with you!
+The code for the browser is in `client`, the code for node.js is in `server`, and some common code used by both (such as CRDT models) is in `common`.  Parcel will automatically detect changes to `client` and recompile them to the `dist` folder and reload any changes in your browser.  Any changes to the server will require a restart to take effect.  These should be minimal though - the server's only job is to keep track of your CRDT models.
