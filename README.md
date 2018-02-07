@@ -2,7 +2,7 @@
 
 Realtime coordination demo for disaster response teams.
 
-![v1.0.0 screenshot](docs/v1.0.0.png)
+![v1.1.0 screenshot](docs/v1.1.0.png)
 
 ## Who
 
