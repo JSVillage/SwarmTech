@@ -1,6 +1,6 @@
 {
   "name": "swarmtech",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Realtime coordination demo for disaster response teams.",
   "main": "index.js",
   "scripts": {

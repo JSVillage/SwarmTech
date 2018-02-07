@@ -22,7 +22,7 @@ Vue.component('chat-box', {
 
     // watch for changes, update chat
     this.chat.on((spec, val, source) => {
-      console.log('chat changed with op:', spec.op())
+      //console.log('chat changed with op:', spec.op())
       if (_.includes(['set', 'init', 'change'], spec.op())) {
         process.nextTick(() => {
           const chats = window.chats = this.chat.list(c => c._id)
@@ -30,7 +30,7 @@ Vue.component('chat-box', {
           // wait until all the chat messages have synced
           async.parallel(chats.map(c => c.ready.bind(c)), () => {
             const history = chats.map(m => m.pojo())
-            console.log('chat changed:', history)
+            //console.log('chat changed:', history)
             this.history = history
           })
         })
