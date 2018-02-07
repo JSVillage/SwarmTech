@@ -9,6 +9,7 @@ const loadModels = require('../../common/loadModels')
 const models = [
   require('../../common/models/pin'),
   require('../../common/models/chat'),
+  require('../../common/models/event'),
 ]
 
 const app = window.app = {}

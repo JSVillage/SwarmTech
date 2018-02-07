@@ -34,8 +34,8 @@ function addReady(Constructor) {
   })
 }
 
-// augment these classes with helper methods for detecting when state is ready
-[Syncable].forEach(addReady)
+// augment Syncable with helper methods for detecting when state is ready
+addReady(Syncable)
 
 module.exports = function loadModels(models) {
 
